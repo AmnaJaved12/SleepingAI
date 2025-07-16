@@ -2,10 +2,7 @@ import React, { useState } from "react";
 import "./LibraryScreen.css";
 
 const categories = ["My stories", "Saved Stories", "Published"];
-const sections = [
-  "Private",
-  "Community",
-];
+const sections = ["Private", "Community"];
 
 const stories = [
   "Lantern of the Meadow Sprite",
@@ -28,17 +25,6 @@ const LibraryScreen = () => {
 
   return (
     <div className="library-page">
-      <nav className="navbar">
-        <ul className="nav-links">
-          <li>Home</li>
-          <li className="active">Library</li>
-          <li>Player</li>
-          <li>Community</li>
-          <li>Setting</li>
-        </ul>
-        <div className="credits-badge">437 ✨</div>
-      </nav>
-
       <header className="library-header">
         <h2>My Library</h2>
         <p>Your bedtime story collection</p>

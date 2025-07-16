@@ -1,7 +1,7 @@
 // src/screens/Onboarding/OnboardingScreen.jsx
 
 import React, { useState } from "react";
-import "./OnboardingScreen.css"; // We’ll create this CSS file next
+import "./OnboardingScreen.css"; 
 
 const onboardingSlides = [
   {

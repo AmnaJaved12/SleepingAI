@@ -2,11 +2,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100dvh; /* ensures full height of viewport */
+  height: 100dvh; 
   background-color: #040633;
   padding: 0 60px;
   gap: 60px;
-  overflow: hidden; /* prevents scrollbars */
+  overflow: hidden; 
 }
 
 .onboarding-left {
@@ -14,7 +14,7 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  height: 600px; /* <- ADDED: constrains vertical height */
+  height: 600px; 
 }
 
 .image-wrapper {
@@ -22,7 +22,7 @@
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-  height: 100%; /* fill parent */
+  height: 100%; 
   width: 100%;
   display: flex;
   justify-content: center;
@@ -62,7 +62,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-left: 20px; /* subtle left spacing */
+  padding-left: 20px; 
 }
 
 .onboarding-right h2 {

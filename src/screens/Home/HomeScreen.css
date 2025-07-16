@@ -1,0 +1,63 @@
+/* src/screens/Home/HomeScreen.css */
+
+.home-container {
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 30px 50px;
+  position: relative;
+  font-family: 'Poppins', sans-serif;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.credits-badge {
+  background-color: #00d084;
+  padding: 6px 12px;
+  border-radius: 12px;
+  font-weight: bold;
+}
+
+.hero-section {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  max-width: 500px;
+}
+
+.hero-text h1 {
+  font-size: 36px;
+  margin-bottom: 12px;
+}
+
+.hero-text p {
+  font-size: 16px;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.generate-btn {
+  background-color: #a78bfa;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-weight: 600;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+}

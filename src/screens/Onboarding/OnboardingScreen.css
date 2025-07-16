@@ -1,0 +1,118 @@
+.onboarding-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100dvh; /* ensures full height of viewport */
+  background-color: #040633;
+  padding: 0 60px;
+  gap: 60px;
+  overflow: hidden; /* prevents scrollbars */
+}
+
+.onboarding-left {
+  flex: 0 0 500px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 600px; /* <- ADDED: constrains vertical height */
+}
+
+.image-wrapper {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  height: 100%; /* fill parent */
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.onboarding-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 20px;
+}
+
+.nav-buttons {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  display: flex;
+  gap: 10px;
+}
+
+.nav-btn {
+  background-color: white;
+  color: #000;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 18px;
+  cursor: pointer;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.onboarding-right {
+  flex: 1;
+  max-width: 440px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 20px; /* subtle left spacing */
+}
+
+.onboarding-right h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.onboarding-right h3 {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.google-btn {
+  background-color: white;
+  color: black;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid #ccc;
+  margin: 20px 0;
+}
+
+.input {
+  padding: 10px;
+  margin-bottom: 12px;
+  border-radius: 6px;
+  border: none;
+  font-size: 14px;
+}
+
+.continue-btn {
+  background-color: #a78bfa;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.signup-note {
+  font-size: 12px;
+  margin-top: 12px;
+}

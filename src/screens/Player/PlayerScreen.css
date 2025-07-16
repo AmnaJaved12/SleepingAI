@@ -7,12 +7,11 @@
   flex-direction: column;
 }
 
-/* ✅ Hide navbar completely */
 .navbar {
   display: none;
 }
 
-/* ✅ New credit header (for button only) */
+
 .credit-header {
   display: flex;
   justify-content: flex-end;
@@ -83,7 +82,7 @@ audio {
   max-width: 400px;
 }
 
-/* ✅ Footer adjustments */
+
 .footer {
   margin-top: auto;
   padding: 40px 20px 20px;
@@ -102,7 +101,7 @@ audio {
   margin: auto;
 }
 
-/* ✅ Remove footer nav links */
+
 .footer-nav {
   display: none;
 }

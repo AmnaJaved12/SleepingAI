@@ -1,7 +1,7 @@
 // src/screens/Onboarding/OnboardingScreen.jsx
 
 import React, { useState } from "react";
-import "./OnboardingScreen.css"; 
+import "./OnboardingScreen.css";
 
 const onboardingSlides = [
   {
@@ -18,7 +18,7 @@ const onboardingSlides = [
   },
 ];
 
-const OnboardingScreen = () => {
+const OnboardingScreen = ({ onContinue }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const handlePrev = () => {
@@ -56,7 +56,7 @@ const OnboardingScreen = () => {
         <hr className="divider" />
         <input type="email" placeholder="Email" className="input" />
         <input type="password" placeholder="Password" className="input" />
-        <button className="continue-btn">CONTINUE →</button>
+        <button className="continue-btn" onClick={onContinue}>CONTINUE →</button>
         <p className="signup-note">
           Are you a Newbie? <strong>GET STARTED - IT'S FREE</strong>
         </p>

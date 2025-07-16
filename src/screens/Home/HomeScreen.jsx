@@ -1,6 +1,5 @@
-// src/screens/Home/HomeScreen.jsx
-
 import React from "react";
+import { Link } from "react-router-dom";
 import "./HomeScreen.css";
 
 const HomeScreen = () => {
@@ -11,11 +10,11 @@ const HomeScreen = () => {
     >
       <nav className="navbar">
         <ul className="nav-links">
-          <li>Home</li>
-          <li>Library</li>
-          <li>Player</li>
-          <li>Community</li>
-          <li>Setting</li>
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/library">Library</Link></li>
+          <li><Link to="/player">Player</Link></li>
+          <li><Link to="/community">Community</Link></li>
+          <li><Link to="/setting">Setting</Link></li>
         </ul>
         <div className="credits-badge">
           437 <span role="img" aria-label="sparkles">✨</span>

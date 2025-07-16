@@ -1,0 +1,169 @@
+/* src/screens/Library/LibraryScreen.css */
+
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: #041832;
+  color: white;
+}
+
+.library-page {
+  background: linear-gradient(to bottom, #013558, #02142a);
+  min-height: 100vh;
+  padding: 0;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background-color: transparent;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.nav-links li {
+  cursor: pointer;
+  color: white;
+}
+
+.nav-links .active {
+  border-bottom: 2px solid #a78bfa;
+}
+
+.credits-badge {
+  background-color: #00d084;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-weight: bold;
+  color: white;
+}
+
+.library-header {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.library-header h2 {
+  font-size: 28px;
+  margin-bottom: 4px;
+}
+
+.library-header p {
+  font-size: 14px;
+  color: #ccc;
+}
+
+.tab-switcher {
+  margin-top: 12px;
+}
+
+.tab-switcher button {
+  background-color: transparent;
+  border: 1px solid #00d084;
+  color: #00d084;
+  padding: 8px 18px;
+  border-radius: 20px;
+  margin: 0 6px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.tab-switcher .active-tab {
+  background-color: #00d084;
+  color: #000;
+}
+
+.category-filters {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 30px;
+}
+
+.category-filters button {
+  background-color: #153f69;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.category-filters .active-category {
+  background-color: #00d084;
+  color: #000;
+  font-weight: bold;
+}
+
+.search-bar-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.search-input {
+  padding: 12px 20px;
+  width: 360px;
+  border-radius: 30px;
+  border: none;
+  outline: none;
+  font-size: 15px;
+  background-color: #163d65;
+  color: white;
+}
+
+.search-input::placeholder {
+  color: #aaa;
+}
+
+.story-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 20px;
+  padding: 20px 60px;
+}
+
+.story-card {
+  background-color: #092543;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.story-card:hover {
+  transform: translateY(-6px);
+}
+
+.story-image {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+}
+
+.story-title {
+  padding: 10px 12px;
+  font-size: 14px;
+  color: white;
+  text-align: center;
+  font-weight: 500;
+}
+
+.footer {
+  background-color: transparent;
+  text-align: center;
+  color: #bbb;
+  font-size: 13px;
+  margin-top: 40px;
+  padding: 20px;
+  line-height: 1.5;
+}

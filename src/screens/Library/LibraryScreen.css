@@ -1,21 +1,17 @@
-
 body, html {
   margin: 0;
   padding: 0;
 }
 
 .library-page {
-  margin: 0;
-  padding-top: 0;
   background: linear-gradient(180deg, #00537a 0%, #00253f 100%);
+  min-height: 100vh;
+  color: white;
 }
-
 
 .library-header {
   text-align: center;
   margin: 30px 0 10px;
-  padding: 0;
-  background: none;
 }
 
 .library-header h2 {
@@ -49,12 +45,12 @@ body, html {
   color: #000;
 }
 
-
 .category-filters {
   display: flex;
   justify-content: center;
   gap: 12px;
   margin-top: 20px;
+  flex-wrap: wrap;
 }
 
 .category-filters button {
@@ -72,7 +68,6 @@ body, html {
   color: #000;
   font-weight: bold;
 }
-
 
 .search-bar-wrapper {
   display: flex;
@@ -95,10 +90,9 @@ body, html {
   color: #aaa;
 }
 
-
 .story-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   gap: 20px;
   padding: 20px 60px;
 }
@@ -108,7 +102,7 @@ body, html {
   border-radius: 16px;
   overflow: hidden;
   transition: transform 0.3s ease;
-  cursor: pointer;
+  position: relative;
 }
 
 .story-card:hover {
@@ -124,11 +118,31 @@ body, html {
 .story-title {
   padding: 10px 12px;
   font-size: 14px;
-  color: white;
   text-align: center;
   font-weight: 500;
 }
 
+.card-actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.card-actions button {
+  background: transparent;
+  border: 1px solid #00d084;
+  color: #00d084;
+  border-radius: 8px;
+  padding: 4px 8px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.card-actions button:hover {
+  background: #00d084;
+  color: #000;
+}
 
 .footer {
   text-align: center;

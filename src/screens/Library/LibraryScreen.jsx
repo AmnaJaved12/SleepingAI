@@ -4,24 +4,29 @@ import "./LibraryScreen.css";
 const categories = ["My stories", "Saved Stories", "Published"];
 const sections = ["Private", "Community"];
 
-const stories = [
-  "Lantern of the Meadow Sprite",
-  "The Silent Keep in the Morning Mist",
-  "Dawnlight at the Round-Door Burrow",
-  "Enchantress of the Silver Grove",
-  "First Moonwalk Beneath the Stars",
-  "The Silent Watch of the Clay Guard",
-  "Whispers of the Winter Fox",
-  "The Flamingo's Mirror: Still Lagoon",
-  "Whispers of the Sacred Book",
-  "Dawn Over the Shining Shrine",
-  "Moon-Rover and the Whispering Waters",
-  "Whispers of the Ancient Arena",
+const allStories = [
+  { title: "Lantern of the Meadow Sprite", image: "/assets/images/sample1.jpg" },
+  { title: "The Silent Keep in the Morning Mist", image: "/assets/images/sample2.jpg" },
+  { title: "Dawnlight at the Round-Door Burrow", image: "/assets/images/sample3.jpg" },
+  { title: "Enchantress of the Silver Grove", image: "/assets/images/sample4.jpg" },
+  { title: "First Moonwalk Beneath the Stars", image: "/assets/images/sample5.jpg" },
+  { title: "The Silent Watch of the Clay Guard", image: "/assets/images/sample6.jpg" },
+  { title: "Whispers of the Winter Fox", image: "" },
+  { title: "The Flamingo's Mirror: Still Lagoon", image: "" },
+  { title: "Whispers of the Sacred Book", image: "" },
+  { title: "Dawn Over the Shining Shrine", image: "" },
+  { title: "Moon-Rover and the Whispering Waters", image: "" },
+  { title: "Whispers of the Ancient Arena", image: "" },
 ];
 
 const LibraryScreen = () => {
   const [activeTab, setActiveTab] = useState("Private");
   const [category, setCategory] = useState("My stories");
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const filteredStories = allStories.filter((story) =>
+    story.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   return (
     <div className="library-page">
@@ -58,18 +63,25 @@ const LibraryScreen = () => {
           className="search-input"
           type="text"
           placeholder="Search for stories..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
         />
       </div>
 
       <div className="story-grid">
-        {stories.map((story, index) => (
+        {filteredStories.map((story, index) => (
           <div className="story-card" key={index}>
             <img
-              src={`/assets/images/sample${(index % 6) + 1}.jpg`}
-              alt={story}
+              src={story.image || "/assets/images/placeholder.jpg"}
+              alt={story.title}
               className="story-image"
             />
-            <p className="story-title">{story}</p>
+            <p className="story-title">{story.title}</p>
+            <div className="card-actions">
+              <button>▶️</button>
+              <button>💾</button>
+              <button>🔗</button>
+            </div>
           </div>
         ))}
       </div>

@@ -2,6 +2,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./HomeScreen.css";
 
+const topics = [
+  { name: "Science", emoji: "🔬" },
+  { name: "Time Travel", emoji: "⏳" },
+  { name: "Fermi Paradox", emoji: "🌌" },
+  { name: "Fantasy", emoji: "🐉" },
+];
+
 const HomeScreen = () => {
   return (
     <div
@@ -16,7 +23,7 @@ const HomeScreen = () => {
           <li><Link to="/community">Community</Link></li>
           <li><Link to="/setting">Setting</Link></li>
         </ul>
-        <div className="credits-badge">
+        <div className="credits-badge" title="Your available credits">
           437 <span role="img" aria-label="sparkles">✨</span>
         </div>
       </nav>
@@ -30,10 +37,24 @@ const HomeScreen = () => {
             settings, and plots. AI will assist you in bringing your story to life.
           </p>
           <button className="generate-btn">✨ Generate Story for 10 credits</button>
+
+          <div className="topic-picker">
+            {topics.map((topic, index) => (
+              <div key={index} className="topic-card">
+                {topic.emoji} {topic.name}
+              </div>
+            ))}
+          </div>
+
+          <input
+            type="text"
+            className="custom-topic-input"
+            placeholder="Or enter a custom topic..."
+          />
         </div>
       </div>
     </div>
   );
 };
 
-export default HomeScreen; 
+export default HomeScreen;

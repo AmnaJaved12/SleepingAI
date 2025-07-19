@@ -7,11 +7,6 @@
   flex-direction: column;
 }
 
-.navbar {
-  display: none;
-}
-
-
 .credit-header {
   display: flex;
   justify-content: flex-end;
@@ -25,6 +20,11 @@
   border-radius: 16px;
   font-weight: bold;
   cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.credit-btn:hover {
+  transform: scale(1.05);
 }
 
 .hero-section {
@@ -76,12 +76,71 @@
   margin-bottom: 16px;
 }
 
+.audio-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.skip-btn {
+  background-color: transparent;
+  border: 1px solid #00e19b;
+  padding: 6px 12px;
+  border-radius: 6px;
+  color: #00e19b;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.skip-btn:hover {
+  background-color: #00e19b;
+  color: black;
+}
+
 audio {
-  margin-top: 20px;
   width: 60%;
   max-width: 400px;
 }
 
+.extras {
+  margin: 20px auto;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.extras label {
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.actions {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.action-btn {
+  background-color: #a78bfa;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.action-btn:hover {
+  background-color: #8b5cf6;
+}
 
 .footer {
   margin-top: auto;
@@ -101,12 +160,23 @@ audio {
   margin: auto;
 }
 
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .audio-controls {
+    flex-direction: column;
+  }
 
-.footer-nav {
-  display: none;
-}
+  audio {
+    width: 100%;
+  }
 
-.social-icons i {
-  margin: 0 8px;
-  cursor: pointer;
+  .extras, .actions {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .main-image {
+    width: 100px;
+    height: 100px;
+  }
 }

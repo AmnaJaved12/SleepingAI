@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import "./PlayerScreen.css";
 
 const PlayerScreen = () => {
+  const [music, setMusic] = useState("Sunset Waves");
+  const [speed, setSpeed] = useState(1.0);
+
   return (
     <div className="player-page">
-      {/* Credit Badge Only */}
+      {/* Header */}
       <div className="credit-header">
-        <button className="credit-btn">437 🪙</button>
+        <button className="credit-btn" title="Your available credits">437 ✨</button>
       </div>
 
       {/* Hero Section */}
@@ -15,9 +18,6 @@ const PlayerScreen = () => {
         style={{
           backgroundImage:
             "linear-gradient(to bottom, rgba(0, 0, 0, 0.5), #001c3f), url('/assets/images/fox.jpg')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
         }}
       >
         <div className="highlight-box">
@@ -41,20 +41,49 @@ const PlayerScreen = () => {
           className="main-image"
         />
         <h3>Whispers of the Winter Fox</h3>
-        <audio controls>
-          <source src="/winter-fox.mp3" type="audio/mpeg" />
-          Your browser does not support the audio element.
-        </audio>
+
+        <div className="audio-controls">
+          <button className="skip-btn">⏪ 10s</button>
+          <audio controls playbackRate={speed}>
+            <source src="/winter-fox.mp3" type="audio/mpeg" />
+            Your browser does not support the audio element.
+          </audio>
+          <button className="skip-btn">10s ⏩</button>
+        </div>
+
+        <div className="extras">
+          <label>
+            Ambient Music:
+            <select value={music} onChange={(e) => setMusic(e.target.value)}>
+              <option value="Sunset Waves">Sunset Waves</option>
+              <option value="Rainfall">Rainfall</option>
+              <option value="Night Breeze">Night Breeze</option>
+            </select>
+          </label>
+
+          <label>
+            Speed:
+            <select value={speed} onChange={(e) => setSpeed(Number(e.target.value))}>
+              <option value={1.0}>1x</option>
+              <option value={1.25}>1.25x</option>
+              <option value={1.5}>1.5x</option>
+            </select>
+          </label>
+        </div>
+
+        <div className="actions">
+          <button className="action-btn">💾 Save</button>
+          <button className="action-btn">🔗 Share</button>
+          <button className="action-btn">🌓 Toggle Dark Mode</button>
+        </div>
       </div>
 
-      {/* Footer (Only company info and copyright) */}
+      {/* Footer */}
       <footer className="footer">
         <div className="footer-content">
           <div>
-            <strong>Sleeping AI</strong>
-            <br />
-            Reverie Building, Country Pk, London 202, PKE, United Kingdom
-            <br />
+            <strong>Sleeping AI</strong><br />
+            Reverie Building, Country Pk, London 202, PKE, United Kingdom<br />
             +44-01234567890 | support@sleepingai.com
           </div>
         </div>

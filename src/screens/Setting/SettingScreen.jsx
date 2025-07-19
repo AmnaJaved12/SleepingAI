@@ -10,112 +10,110 @@ const SettingScreen = () => {
     screenReader: true,
   });
 
+  const [promoCode, setPromoCode] = useState("");
+  const userName = "UserName"; // ✅ Removed setUserName since it's not used
+
   const toggleSwitch = (key) => {
     setPreferences({ ...preferences, [key]: !preferences[key] });
+  };
+
+  const handlePromoApply = () => {
+    alert(`Promo code "${promoCode}" applied!`);
   };
 
   return (
     <>
       <div className="settings-page">
+        {/* User Info */}
         <div className="user-info">
-          <h2>@UserName</h2>
+          <h2>@{userName}</h2>
           <p>example@gmail.com</p>
-          <button className="edit-btn">Edit User Name</button>
+          <button className="edit-btn" onClick={() => alert("Edit modal here")}>
+            Edit User Name
+          </button>
         </div>
 
+        {/* Main Sections */}
         <div className="settings-sections">
-          {/* Account */}
+          {/* Account Info */}
           <div className="section-box">
             <h3>Account</h3>
-            <div className="row">
-              <span>📧 Email</span>
-              <p>example@gmail.com</p>
-              <span className="arrow"></span>
+            <div className="row"><span>📧 Email</span><p>example@gmail.com</p></div>
+            <div className="row"><span>🔒 Password</span><p>••••••••</p></div>
+            <div className="row"><span>📞 Phone</span><p>+44•••••••••</p></div>
+            <div className="row"><span>✨ My Credits</span><p>437</p></div>
+          </div>
+
+          {/* Store */}
+          <div className="section-box">
+            <h3>Store</h3>
+            <div className="row"><span>💳 20 Credits</span><p>£1.99</p></div>
+            <div className="row"><span>💳 50 Credits</span><p>£3.99</p></div>
+            <div className="row"><span>💳 120 Credits</span><p>£6.99</p></div>
+            <div className="promo-row">
+              <input
+                type="text"
+                placeholder="Enter promo code"
+                value={promoCode}
+                onChange={(e) => setPromoCode(e.target.value)}
+              />
+              <button onClick={handlePromoApply}>Apply</button>
             </div>
-            <div className="row">
-              <span>🔒 Password</span>
-              <p>••••••••</p>
-              <span className="arrow"></span>
-            </div>
-            <div className="row">
-              <span>📞 Phone</span>
-              <p>Enter your phone no:</p>
-              <span className="arrow"></span>
-            </div>
-            <div className="row">
-              <span>✨ My Credits</span>
-              <span className="arrow"></span>
-            </div>
+            <div className="row"><span>📜</span><p>View transaction history</p></div>
           </div>
 
           {/* Preferences */}
           <div className="section-box">
             <h3>Preferences</h3>
-            <div className="row">
-              <span>🔔 Push Notifications</span>
-              <label className="switch">
-                <input
-                  type="checkbox"
-                  checked={preferences.pushNotifications}
-                  onChange={() => toggleSwitch("pushNotifications")}
-                />
-                <span className="slider" />
-              </label>
-            </div>
-            <div className="row">
-              <span>📩 Email Updates</span>
-              <label className="switch">
-                <input
-                  type="checkbox"
-                  checked={preferences.emailUpdates}
-                  onChange={() => toggleSwitch("emailUpdates")}
-                />
-                <span className="slider" />
-              </label>
-            </div>
-            <div className="row">
-              <span>🔊 Sound Effects</span>
-              <label className="switch">
-                <input
-                  type="checkbox"
-                  checked={preferences.soundEffects}
-                  onChange={() => toggleSwitch("soundEffects")}
-                />
-                <span className="slider" />
-              </label>
-            </div>
+            {["pushNotifications", "emailUpdates", "soundEffects"].map((pref) => (
+              <div className="row" key={pref}>
+                <span>
+                  {pref === "pushNotifications" && "🔔"}
+                  {pref === "emailUpdates" && "📩"}
+                  {pref === "soundEffects" && "🔊"}{" "}
+                  {pref.replace(/([A-Z])/g, " $1")}
+                </span>
+                <label className="switch">
+                  <input
+                    type="checkbox"
+                    checked={preferences[pref]}
+                    onChange={() => toggleSwitch(pref)}
+                  />
+                  <span className="slider" />
+                </label>
+              </div>
+            ))}
           </div>
 
           {/* Accessibility */}
           <div className="section-box">
             <h3>Accessibility</h3>
-            <div className="row">
-              <span>🦾 High-Contrast</span>
-              <label className="switch">
-                <input
-                  type="checkbox"
-                  checked={preferences.highContrast}
-                  onChange={() => toggleSwitch("highContrast")}
-                />
-                <span className="slider" />
-              </label>
-            </div>
-            <div className="row">
-              <span>📖 Screen Reader</span>
-              <label className="switch">
-                <input
-                  type="checkbox"
-                  checked={preferences.screenReader}
-                  onChange={() => toggleSwitch("screenReader")}
-                />
-                <span className="slider" />
-              </label>
-            </div>
+            {["highContrast", "screenReader"].map((pref) => (
+              <div className="row" key={pref}>
+                <span>
+                  {pref === "highContrast" && "🦾"} {pref === "screenReader" && "📖"}{" "}
+                  {pref.replace(/([A-Z])/g, " $1")}
+                </span>
+                <label className="switch">
+                  <input
+                    type="checkbox"
+                    checked={preferences[pref]}
+                    onChange={() => toggleSwitch(pref)}
+                  />
+                  <span className="slider" />
+                </label>
+              </div>
+            ))}
           </div>
+
+          {/* Save Settings */}
+          <button className="save-btn" onClick={() => alert("Settings saved!")}>
+            Save Changes
+          </button>
         </div>
       </div>
 
-      {/* Footer moved outside */}
+      {/* Footer */}
       <footer className="footer">
         <p>Sleeping AI</p>
         <p>

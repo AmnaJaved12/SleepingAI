@@ -92,9 +92,9 @@ body, html {
 
 .story-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 20px;
-  padding: 20px 60px;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); 
+  gap: 24px; 
+  padding: 24px 60px;
 }
 
 .story-card {
@@ -103,6 +103,11 @@ body, html {
   overflow: hidden;
   transition: transform 0.3s ease;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%; 
+  padding-bottom: 12px; 
 }
 
 .story-card:hover {
@@ -120,23 +125,34 @@ body, html {
   font-size: 14px;
   text-align: center;
   font-weight: 500;
+  color: #fff;
 }
 
 .card-actions {
   display: flex;
-  justify-content: center;
-  gap: 12px;
-  margin-bottom: 12px;
+  justify-content: space-evenly; 
+  align-items: center;
+  padding: 12px;
+  flex-wrap: wrap; 
+  gap: 8px;
+  border-top: 1px solid #0f3e63;
+  background-color: #0b3050;
+  min-height: 56px; 
 }
-
 .card-actions button {
   background: transparent;
   border: 1px solid #00d084;
   color: #00d084;
   border-radius: 8px;
-  padding: 4px 8px;
+  padding: 6px 12px;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 16px;
+  transition: background 0.3s, color 0.3s;
+  min-width: 36px;
+  min-height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .card-actions button:hover {
@@ -144,6 +160,16 @@ body, html {
   color: #000;
 }
 
+
+.delete-button {
+  border-color: #ff4d4f;
+  color: #ff4d4f;
+}
+
+.delete-button:hover {
+  background-color: #ff4d4f;
+  color: #000;
+}
 .footer {
   text-align: center;
   color: #bbb;

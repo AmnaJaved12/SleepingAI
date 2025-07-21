@@ -4,7 +4,7 @@ import "./LibraryScreen.css";
 const categories = ["My stories", "Saved Stories", "Published"];
 const sections = ["Private", "Community"];
 
-const allStories = [
+const initialStories = [
   { title: "Lantern of the Meadow Sprite", image: "/assets/images/sample1.jpg" },
   { title: "The Silent Keep in the Morning Mist", image: "/assets/images/sample2.jpg" },
   { title: "Dawnlight at the Round-Door Burrow", image: "/assets/images/sample3.jpg" },
@@ -23,8 +23,21 @@ const LibraryScreen = () => {
   const [activeTab, setActiveTab] = useState("Private");
   const [category, setCategory] = useState("My stories");
   const [searchTerm, setSearchTerm] = useState("");
+  const [savedStories, setSavedStories] = useState(initialStories);
 
-  const filteredStories = allStories.filter((story) =>
+  const handleDelete = (indexToDelete) => {
+    const confirmed = window.confirm("Are you sure you want to delete this story?");
+    if (confirmed) {
+      setSavedStories((prevStories) =>
+        prevStories.filter((_, idx) => idx !== indexToDelete)
+      );
+    }
+  };
+
+  const storiesToDisplay =
+    category === "Saved Stories" ? savedStories : initialStories;
+
+  const filteredStories = storiesToDisplay.filter((story) =>
     story.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
@@ -78,9 +91,18 @@ const LibraryScreen = () => {
             />
             <p className="story-title">{story.title}</p>
             <div className="card-actions">
-              <button>▶️</button>
-              <button>💾</button>
-              <button>🔗</button>
+              <button title="Play">▶️</button>
+              <button title="Save">💾</button>
+              <button title="Share">🔗</button>
+              {category === "Saved Stories" && (
+                <button
+                  className="delete-button"
+                  title="Delete"
+                  onClick={() => handleDelete(index)}
+                >
+                  🗑️
+                </button>
+              )}
             </div>
           </div>
         ))}

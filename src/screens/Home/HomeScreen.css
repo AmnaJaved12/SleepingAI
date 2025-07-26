@@ -131,10 +131,25 @@ html, body {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .navbar {
-    flex-direction: column;
-    align-items: flex-start;
+    .navbar {
+    flex-direction: row;        
+    justify-content: center;    
+    flex-wrap: wrap;            
     gap: 10px;
+  }
+
+  .nav-links {
+    flex-direction: row;      
+    gap: 15px;                  
+    font-size: 14px;            
+    flex-wrap: wrap;            
+    justify-content: center;
+    width: 100%;
+    overflow-x: auto;         
+  }
+
+  .nav-links::-webkit-scrollbar {
+    display: none;
   }
 
   .hero-section {
@@ -151,5 +166,67 @@ html, body {
 
   .topic-picker {
     flex-direction: column;
+  }
+  .credits-badge {
+  display: block;
+  margin: 0 auto;       
+  text-align: center;   
+}
+}
+
+/* Tablet (768px to 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .hero-section {
+    padding-left: 30px;
+    height: 260px;
+  }
+
+  .highlight-box {
+    max-width: 300px;
+  }
+
+  .main-image {
+    width: 120px;
+    height: 120px;
+  }
+
+  .audio-controls {
+    gap: 20px;
+  }
+
+  audio {
+    width: 80%;
+  }
+
+  .credit-header {
+    padding: 16px 30px 0;
+  }
+}
+
+/* Desktop (1025px and above) */
+@media (min-width: 1025px) {
+  .player-page {
+    padding: 0 60px;
+  }
+
+  .hero-section {
+    height: 300px;
+  }
+
+  .highlight-box {
+    max-width: 400px;
+  }
+
+  .audio-controls {
+    gap: 25px;
+  }
+
+  .main-image {
+    width: 160px;
+    height: 160px;
+  }
+
+  audio {
+    width: 60%;
   }
 }

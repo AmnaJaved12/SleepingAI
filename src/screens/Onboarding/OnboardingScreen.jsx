@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import "./OnboardingScreen.css";
-import { getAuth, GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth";
+import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { initializeApp } from "firebase/app";
 
@@ -37,7 +37,12 @@ const provider = new GoogleAuthProvider();
 
 const OnboardingScreen = ({ onContinue }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
 
+  const [isRegistering, setIsRegistering] = useState(false);
   const handlePrev = () => {
     setCurrentSlide((prev) =>
       prev === 0 ? onboardingSlides.length - 1 : prev - 1
@@ -48,6 +53,39 @@ const OnboardingScreen = ({ onContinue }) => {
     setCurrentSlide((prev) =>
       prev === onboardingSlides.length - 1 ? 0 : prev + 1
     );
+  };
+
+  const toggleRegistering = () => {
+    setIsRegistering(!isRegistering);
+  };
+
+  const handleLogin = async () => {
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      // If login is successful, call onContinue
+      onContinue();
+    } catch (error) {
+      console.error("Error during login:", error.message);
+      alert("Login failed: " + error.message);
+    }
+  };
+
+  const handleRegister = async () => {
+    if (password !== confirmPassword) {
+      alert("Passwords don't match!");
+      return;
+    }
+
+    try {
+      await createUserWithEmailAndPassword(auth, email, password);
+      // Registration successful, call onContinue
+      onContinue();
+      // Optionally, you might want to update the user's profile with the username here
+      // For example: await updateProfile(auth.currentUser, { displayName: username });
+    } catch (error) {
+      console.error("Error during registration:", error.message);
+      alert("Registration failed: " + error.message);
+    }
   };
 
   const [user] = useAuthState(auth);
@@ -78,15 +116,72 @@ const OnboardingScreen = ({ onContinue }) => {
         ) : (
           <>
             <h3>Continue to your Account.</h3>
-            <button className="google-btn" onClick={() => signInWithPopup(auth, provider)}>Log in with Google</button>
+            <button className="google-btn" onClick={async () => {
+ try {
+ await signInWithPopup(auth, provider);
+ } catch (error) {
+ if (error.code === 'auth/popup-closed-by-user') {
+ alert('Google login was cancelled.');
+ } else {
+ console.error(error);
+ }
+ }
+            }}>Log in with Google</button>
           </>
         )}
         <hr className="divider" />
-        <input type="email" placeholder="Email" className="input" />
-        <input type="password" placeholder="Password" className="input" />
-        <button className="continue-btn" onClick={onContinue}>CONTINUE →</button>
+        {isRegistering ? (
+          <>
+            <input
+              type="text"
+              placeholder="Username"
+              className="input"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+            <input
+              type="email"
+              placeholder="Email"
+              className="input"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              className="input"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <input
+              type="password"
+              placeholder="Confirm Password"
+              className="input"
+              value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)}/>
+            <button className="continue-btn\" onClick={handleRegister}>REGISTER →</button>
+          </>
+        ) : (
+          <>
+            <input
+              type="email"
+              placeholder="Email"
+              className="input"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              className="input"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <button className="continue-btn" onClick={handleLogin}>LOGIN &rarr;</button>
+          </>
+        )}
+ <button className="register-btn" onClick={toggleRegistering}>{isRegistering ? 'BACK TO LOGIN' : 'REGISTER &rarr;'}</button>
         <p className="signup-note">
-          Are you a Newbie? <strong>GET STARTED - IT'S FREE</strong>
+          {isRegistering ? 'Already have an account?' : 'Are you a Newbie?'} <strong>GET STARTED - IT'S FREE</strong>
         </p>
       </div>
     </div>

@@ -12,22 +12,24 @@ function App() {
 
   return (
     <Router>
-      <Routes>
-        {!isLoggedIn ? (
-          <Route
-            path="*"
-            element={<OnboardingScreen onContinue={() => setIsLoggedIn(true)} />}
-          />
-        ) : (
-          <>
+      {isLoggedIn ? (
+        <React.Fragment>
+          <Routes>
             <Route path="/" element={<HomeScreen />} />
             <Route path="/library" element={<LibraryScreen />} />
             <Route path="/player" element={<PlayerScreen />} />
             <Route path="/community" element={<CommunityScreen />} />
             <Route path="/setting" element={<SettingScreen />} />
-          </>
-        )}
-      </Routes>
+          </Routes>
+        </React.Fragment>
+      ) : (
+        <Routes>
+          <Route
+            path="*"
+            element={<OnboardingScreen onContinue={() => setIsLoggedIn(true)} />}
+          />
+        </Routes>
+      )}
     </Router>
   );
 }

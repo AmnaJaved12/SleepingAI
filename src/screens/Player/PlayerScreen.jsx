@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import "./PlayerScreen.css";
+import { Link } from 'react-router-dom';
+import '../../components/Navbar.css';
 
 const PlayerScreen = () => {
   const [music, setMusic] = useState("Sunset Waves");
@@ -7,6 +9,18 @@ const PlayerScreen = () => {
 
   return (
     <div className="player-page">
+      <nav className="navbar">
+        <ul className="nav-links">
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/library">Library</Link></li>
+          <li><Link to="/player">Player</Link></li>
+          <li><Link to="/community">Community</Link></li>
+          <li><Link to="/setting">Setting</Link></li>
+        </ul>
+        <div className="credits-badge" title="Your available credits">
+          437 <span role="img" aria-label="sparkles">✨</span>
+        </div>
+      </nav>
       {/* Header */}
       <div className="credit-header">
         <button className="credit-btn" title="Your available credits">437 ✨</button>

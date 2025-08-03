@@ -1,0 +1,73 @@
+/* src/components/Navbar.css */
+
+.navbar {
+  padding: 30px 50px; /* Added padding for consistent spacing */
+  box-sizing: border-box; /* Ensure padding is included in element's total width and height */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  font-weight: 500;
+  font-size: 16px;
+  padding-left: 0;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: white;
+  transition: color 0.3s ease;
+}
+
+.nav-links li a:hover {
+  color: #a78bfa;
+}
+
+.credits-badge {
+  background-color: #00d084;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 14px;
+  transition: transform 0.3s;
+}
+
+.credits-badge:hover {
+  transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: row;
+    padding: 20px; /* Adjusted padding for smaller screens */
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .nav-links {
+    flex-direction: row;
+    gap: 15px;
+    font-size: 14px;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  .nav-links::-webkit-scrollbar {
+    display: none;
+  }
+
+  .credits-badge {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+  }
+}

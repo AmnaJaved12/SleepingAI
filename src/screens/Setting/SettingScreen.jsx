@@ -1,5 +1,7 @@
 import React, { useState } from "react";
+import { Link } from 'react-router-dom';
 import "./SettingScreen.css";
+import '../../components/Navbar.css';
 
 const SettingScreen = () => {
   const [preferences, setPreferences] = useState({
@@ -24,6 +26,18 @@ const SettingScreen = () => {
   return (
     <>
       <div className="settings-page">
+        <nav className="navbar">
+          <ul className="nav-links">
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/library">Library</Link></li>
+            <li><Link to="/player">Player</Link></li>
+            <li><Link to="/community">Community</Link></li>
+            <li><Link to="/setting">Setting</Link></li>
+          </ul>
+          <div className="credits-badge" title="Your available credits">
+            437 <span role="img" aria-label="sparkles">✨</span>
+          </div>
+        </nav>
         {/* User Info */}
         <div className="user-info">
           <h2>@{userName}</h2>

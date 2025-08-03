@@ -38,10 +38,20 @@ const SettingScreen = () => {
           {/* Account Info */}
           <div className="section-box">
             <h3>Account</h3>
-            <div className="row"><span>📧 Email</span><p>example@gmail.com</p></div>
+            {/* Google Login Button */}
+            {/* Remove this section if you are not using email/password login */}
+            {/* {user ? (
+              <>
+                <div className="row"><span>📧 Email</span><p>{user.email}</p></div>
+                <button onClick={() => signOut(auth)}>Sign Out</button>
+              </>
+            ) : (
+              <button onClick={() => signInWithPopup(auth, provider)}>Sign in with Google</button>
+            )} */}
             <div className="row"><span>🔒 Password</span><p>••••••••</p></div>
             <div className="row"><span>📞 Phone</span><p>+44•••••••••</p></div>
             <div className="row"><span>✨ My Credits</span><p>437</p></div>
+            <div className="row"><span>📧 Email</span><p>example@gmail.com</p></div>
           </div>
 
           {/* Store */}

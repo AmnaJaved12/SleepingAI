@@ -2,6 +2,9 @@
 
 import React, { useState } from "react";
 import "./OnboardingScreen.css";
+import { getAuth, GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { initializeApp } from "firebase/app";
 
 const onboardingSlides = [
   {
@@ -18,6 +21,20 @@ const onboardingSlides = [
   },
 ];
 
+const firebaseConfig = {
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APP_ID,
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const provider = new GoogleAuthProvider();
+
+
 const OnboardingScreen = ({ onContinue }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
@@ -32,6 +49,8 @@ const OnboardingScreen = ({ onContinue }) => {
       prev === onboardingSlides.length - 1 ? 0 : prev + 1
     );
   };
+
+  const [user] = useAuthState(auth);
 
   return (
     <div className="onboarding-container">
@@ -51,8 +70,17 @@ const OnboardingScreen = ({ onContinue }) => {
 
       <div className="onboarding-right">
         <h2>Sleeping AI</h2>
-        <h3>Continue to your Account.</h3>
-        <button className="google-btn">Log in with Google</button>
+        {user ? (
+          <>
+            <h3>Welcome, {user.email}</h3>
+            <button className="google-btn" onClick={() => signOut(auth)}>Sign Out</button>
+          </>
+        ) : (
+          <>
+            <h3>Continue to your Account.</h3>
+            <button className="google-btn" onClick={() => signInWithPopup(auth, provider)}>Log in with Google</button>
+          </>
+        )}
         <hr className="divider" />
         <input type="email" placeholder="Email" className="input" />
         <input type="password" placeholder="Password" className="input" />

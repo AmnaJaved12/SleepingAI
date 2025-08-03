@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "./LibraryScreen.css";
+import { Link } from "react-router-dom";
 
+import '../../components/Navbar.css';
 const categories = ["My stories", "Saved Stories", "Published"];
 const sections = ["Private", "Community"];
 
@@ -43,6 +45,18 @@ const LibraryScreen = () => {
 
   return (
     <div className="library-page">
+      <nav className="navbar">
+        <ul className="nav-links">
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/library">Library</Link></li>
+          <li><Link to="/player">Player</Link></li>
+          <li><Link to="/community">Community</Link></li>
+          <li><Link to="/setting">Setting</Link></li>
+        </ul>
+        <div className="credits-badge" title="Your available credits">
+          437 <span role="img" aria-label="sparkles">✨</span>
+        </div>
+      </nav>
       <header className="library-header">
         <h2>My Library</h2>
         <p>Your bedtime story collection</p>

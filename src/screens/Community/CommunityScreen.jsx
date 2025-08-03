@@ -7,7 +7,7 @@ const stories = [
     author: "Joanna Wellick",
     date: "June 17, 2025",
     shares: "1.1K",
-    image: "/assets/images/sample6.jpg",
+    image: "/assets/images/bed_moon_scene.png",
     excerpt:
       "Joanna shared this AI-generated bedtime tale about the silent defense watchers in a surreal world where stone comes alive.",
   },
@@ -16,7 +16,7 @@ const stories = [
     author: "Joanna Wellick",
     date: "June 17, 2025",
     shares: "1.1K",
-    image: "/assets/images/sample1.jpg",
+    image: "/assets/images/fox.jpg",
     excerpt:
       "An elvish dreamscape where a glowing lantern guides a sprite across flower fields at twilight.",
   },
@@ -25,7 +25,7 @@ const stories = [
     author: "Joanna Wellick",
     date: "June 17, 2025",
     shares: "1.1K",
-    image: "/assets/images/sample2.jpg",
+    image: "/assets/images/moon_bunny.png",
     excerpt:
       "Mysterious ruins loom beyond fog and time as a wandering prince stumbles upon enchanted stone.",
   },
@@ -34,7 +34,7 @@ const stories = [
     author: "Joanna Wellick",
     date: "June 17, 2025",
     shares: "1.1K",
-    image: "/assets/images/sample3.jpg",
+    image: "/assets/images/chat_phone.png",
     excerpt:
       "A robotic guardian discovers peace walking quiet alleys in a neon-fused sleeping city.",
   },

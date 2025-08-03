@@ -5,18 +5,18 @@ const categories = ["My stories", "Saved Stories", "Published"];
 const sections = ["Private", "Community"];
 
 const initialStories = [
-  { title: "Lantern of the Meadow Sprite", image: "/assets/images/sample1.jpg" },
-  { title: "The Silent Keep in the Morning Mist", image: "/assets/images/sample2.jpg" },
-  { title: "Dawnlight at the Round-Door Burrow", image: "/assets/images/sample3.jpg" },
-  { title: "Enchantress of the Silver Grove", image: "/assets/images/sample4.jpg" },
-  { title: "First Moonwalk Beneath the Stars", image: "/assets/images/sample5.jpg" },
-  { title: "The Silent Watch of the Clay Guard", image: "/assets/images/sample6.jpg" },
-  { title: "Whispers of the Winter Fox", image: "" },
-  { title: "The Flamingo's Mirror: Still Lagoon", image: "" },
-  { title: "Whispers of the Sacred Book", image: "" },
-  { title: "Dawn Over the Shining Shrine", image: "" },
-  { title: "Moon-Rover and the Whispering Waters", image: "" },
-  { title: "Whispers of the Ancient Arena", image: "" },
+  { title: "Lantern of the Meadow Sprite", image: "/assets/images/bed_moon_scene.png" },
+  { title: "The Silent Keep in the Morning Mist", image: "/assets/images/fox.jpg" },
+  { title: "Dawnlight at the Round-Door Burrow", image: "/assets/images/moon_bunny.png" },
+  { title: "Enchantress of the Silver Grove", image: "/assets/images/chat_phone.png" },
+  { title: "First Moonwalk Beneath the Stars", image: "/assets/images/fingerprint_face.png" },
+  { title: "The Silent Watch of the Clay Guard", image: "/assets/images/bed_moon_scene.png" },
+  { title: "Whispers of the Winter Fox", image: "/assets/images/fox.jpg" },
+  { title: "The Flamingo's Mirror: Still Lagoon", image: "/assets/images/moon_bunny.png" },
+  { title: "Whispers of the Sacred Book", image: "/assets/images/chat_phone.png" },
+  { title: "Dawn Over the Shining Shrine", image: "/assets/images/fingerprint_face.png" },
+  { title: "Moon-Rover and the Whispering Waters", image: "/assets/images/bed_moon_scene.png" },
+  { title: "Whispers of the Ancient Arena", image: "/assets/images/fox.jpg" },
 ];
 
 const LibraryScreen = () => {
@@ -76,6 +76,8 @@ const LibraryScreen = () => {
           className="search-input"
           type="text"
           placeholder="Search for stories..."
+ id="story-search"
+ name="story-search"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />

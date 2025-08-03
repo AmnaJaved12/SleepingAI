@@ -1,11 +1,10 @@
-// src/screens/Onboarding/OnboardingScreen.jsx
+import React, { useState, useEffect } from "react";
 
-import React, { useState } from "react";
 import "./OnboardingScreen.css";
 import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
-import { useAuthState } from "react-firebase-hooks/auth";
-import { initializeApp } from "firebase/app";
-
+import { auth, provider } from '../../firebaseConfig'; // Import auth and provider from firebaseConfig
+import { useNavigate } from 'react-router-dom';
+import { useAuthState as useAuthStateHook } from 'react-firebase-hooks/auth';
 const onboardingSlides = [
   {
     id: 1,
@@ -21,21 +20,8 @@ const onboardingSlides = [
   },
 ];
 
-const firebaseConfig = {
-  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
-  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
-  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
-  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
-  appId: process.env.REACT_APP_FIREBASE_APP_ID,
-};
-
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const provider = new GoogleAuthProvider();
-
-
 const OnboardingScreen = ({ onContinue }) => {
+  const navigate = useNavigate();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -60,12 +46,14 @@ const OnboardingScreen = ({ onContinue }) => {
   };
 
   const handleLogin = async () => {
+    console.log('handleLogin function called');
     try {
       await signInWithEmailAndPassword(auth, email, password);
+      console.log('Login successful');
       // If login is successful, call onContinue
-      onContinue();
+      navigate('/home');
     } catch (error) {
-      console.error("Error during login:", error.message);
+      console.error("Error during login:", error);
       alert("Login failed: " + error.message);
     }
   };
@@ -88,7 +76,22 @@ const OnboardingScreen = ({ onContinue }) => {
     }
   };
 
-  const [user] = useAuthState(auth);
+  const [user] = useAuthStateHook(auth);
+
+  useEffect(() => {
+    const loginButton = document.querySelector('.continue-btn');
+    if (loginButton) {
+      const handleButtonClick = () => {
+        console.log('Login button clicked via event listener');
+      };
+      loginButton.addEventListener('click', handleButtonClick);
+
+      return () => {
+        loginButton.removeEventListener('click', handleButtonClick);
+      };
+    }
+  }, [isRegistering]); // Re-run effect when isRegistering changes to find the correct button
+
 
   return (
     <div className="onboarding-container">
@@ -142,6 +145,8 @@ const OnboardingScreen = ({ onContinue }) => {
             <input
               type="email"
               placeholder="Email"
+ id="email"
+ name="email"
               className="input"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -149,6 +154,8 @@ const OnboardingScreen = ({ onContinue }) => {
             <input
               type="password"
               placeholder="Password"
+ id="password"
+ name="password"
               className="input"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
@@ -156,6 +163,8 @@ const OnboardingScreen = ({ onContinue }) => {
             <input
               type="password"
               placeholder="Confirm Password"
+ id="confirmPassword"
+ name="confirmPassword"
               className="input"
               value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)}/>
             <button className="continue-btn\" onClick={handleRegister}>REGISTER →</button>
@@ -165,6 +174,8 @@ const OnboardingScreen = ({ onContinue }) => {
             <input
               type="email"
               placeholder="Email"
+ id="email"
+ name="email"
               className="input"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -172,6 +183,8 @@ const OnboardingScreen = ({ onContinue }) => {
             <input
               type="password"
               placeholder="Password"
+ id="password"
+ name="password"
               className="input"
               value={password}
               onChange={(e) => setPassword(e.target.value)}

@@ -2,20 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 
-import { initializeApp } from 'firebase/app';
-
-// Firebase configuration
-const firebaseConfig = {
-  apiKey: process.env.REACT_APP_FIREBASE_API_KEY || '',
-  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN || '',
-  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID || '',
-  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET || '',
-  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID || '',
-  appId: process.env.REACT_APP_FIREBASE_APP_ID || ''
-};
-
-// Initialize Firebase
-initializeApp(firebaseConfig);
+import { BrowserRouter } from 'react-router-dom'; // Keep this import
+import AppRoutes from './AppRoutes'; // Keep this import
+import './firebaseConfig'; // Import Firebase initialization (including auth export)
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<App />);
+// Remove the redundant render call and update the main render call
+root.render(
+  <BrowserRouter>
+    <AppRoutes />
+  </BrowserRouter>
+);
